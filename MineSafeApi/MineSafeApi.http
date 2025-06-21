@@ -1,0 +1,6 @@
+@MineSafeApi_HostAddress = http://localhost:5221
+
+GET {{MineSafeApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
