@@ -19,6 +19,7 @@ namespace Application.Dto.Usuario
     
     public class UsuarioLoginResponseDto
     {
+        public int Id { get; set; }
         public string Nombres { get; set; }
         public string Dni { get; set; }
         public string Email { get; set; }

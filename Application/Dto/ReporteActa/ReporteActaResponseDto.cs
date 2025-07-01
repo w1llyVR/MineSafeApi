@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Dto.FotoCondicion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace Application.Dto.ReporteActa
         public int UsuarioId { get; set; }
         public DateTime FechaCreacion { get; set; }
         public string Observaciones { get; set; }
+        
+        public IEnumerable<FotoCondicionResponseDto> Fotos { get; set; }
     }
 }

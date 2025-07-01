@@ -71,6 +71,32 @@ namespace Adapters.Output.Persistence
             }
         }
 
+        public async Task<Response<IEnumerable<FotoCondicion>>> GetByReporteIdAsync(int id)
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Id", id);
+                var data = await _connection.QueryAsync<FotoCondicion>("dbo.usp_FotoCondicion_GetByReporteId", parameters, commandType: CommandType.StoredProcedure);
+
+                return new Response<IEnumerable<FotoCondicion>>
+                {
+                    CodeError = HttpErrorCode.Success,
+                    Msj = "Foto Condicion obtenidos exitosamente.",
+                    Data = data
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response<IEnumerable<FotoCondicion>>
+                {
+                    CodeError = HttpErrorCode.InternalServerError,
+                    Msj = $"Error al obtener los FotoCondicion: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
+
         public async Task<RegistroResponse> CreateAsync(FotoCondicion request)
         {
             try

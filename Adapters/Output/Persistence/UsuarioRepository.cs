@@ -127,6 +127,7 @@ namespace Adapters.Output.Persistence
 
                 var result = new UsuarioLogin
                 {
+                    Id = user.Id,
                     Nombres = user.Nombres,
                     Dni = user.Dni,
                     Email = user.Email,

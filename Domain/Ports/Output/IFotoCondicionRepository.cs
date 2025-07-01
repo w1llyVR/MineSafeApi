@@ -12,6 +12,7 @@ namespace Domain.Ports.Output
     {
         Task<Response<IEnumerable<FotoCondicion>>> GetAllAsync();
         Task<Response<IEnumerable<FotoCondicion>>> GetByIdAsync(int id);
+        Task<Response<IEnumerable<FotoCondicion>>> GetByReporteIdAsync(int id);
         Task<RegistroResponse> CreateAsync(FotoCondicion request);
         Task<RegistroResponse> UpdateAsync(FotoCondicion request);
         Task<RegistroResponse> DeleteAsync(int id);

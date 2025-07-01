@@ -1,4 +1,5 @@
-﻿using Application.Dto.ReporteActa;
+﻿using Application.Dto.FotoCondicion;
+using Application.Dto.ReporteActa;
 using Application.Dto.TipoCondicion;
 using Application.Services.Interfaces;
 using AutoMapper;
@@ -45,7 +46,12 @@ namespace Application.Services
         public async Task<Response<IEnumerable<ReporteActaResponseDto>>> GetByIdAsync(int id)
         {
             var result = await _reporteActaRepository.GetByIdAsync(id);
+            var photos = await _fotoCondicionRepository.GetByReporteIdAsync(id);
+            var dtoPhotos = _mapper.Map<IEnumerable<FotoCondicionResponseDto>>(photos.Data);
             var dtoList = _mapper.Map<IEnumerable<ReporteActaResponseDto>>(result.Data);
+
+            if(dtoPhotos != null)
+                dtoList.FirstOrDefault().Fotos = dtoPhotos;
 
             return new Response<IEnumerable<ReporteActaResponseDto>>
             {
